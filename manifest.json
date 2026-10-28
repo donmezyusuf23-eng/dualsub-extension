@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "DualSub - Çift Altyazı & Anlık Sözlük",
+  "version": "1.0.0",
+  "description": "Web dizi ve video sitelerinde İngilizce altyazılara anlık Türkçe çeviri ekler ve kelimelerin üstüne gelindiğinde sözlük anlamını gösterir.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "https://translate.googleapis.com/*",
+    "https://api.dictionaryapi.dev/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "all_frames": true,
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "DualSub Ayarları"
+  }
+}
